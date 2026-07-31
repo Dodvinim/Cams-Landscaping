@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cam's Landscaping | Professional & Reliable Landscape Gardening</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --text-color: #ffffff;
+            --text-muted: #b3b3b3;
+            --accent-dark: #181818;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(180deg, #000000 0%, var(--bg-color) 100%);
+            padding: 30px 20px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: var(--gold);
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--gold-light);
+            font-weight: 300;
+        }
+
+        .location {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #0d0d0d;
+            border-bottom: 1px solid #2a2a2a;
+            position: sticky;
+            top: 0;
+            z-index: 900;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 14px 20px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--gold);
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--gold);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(0, 0, 0, 0.8) 100%), var(--card-bg);
+            border: 1px solid var(--gold);
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            margin-bottom: 50px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+        }
+
+        .hero h2 {
+            color: var(--gold-light);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            max-width: 750px;
+            margin: 0 auto 25px;
+        }
+
+        .btn-gold {
+            display: inline-block;
+            background-color: var(--gold);
+            color: #000;
+            padding: 12px 30px;
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-gold:hover {
+            background-color: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        .section-title {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            margin: 10px auto 0;
+        }
+
+        /* About Section */
+        .about-box {
+            background-color: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .about-box p {
+            color: #d1d1d1;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* Highlights Grid */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background-color: var(--accent-dark);
+            border: 1px solid #2e2e2e;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--gold);
+        }
+
+        .feature-icon {
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .feature-card h3 {
+            color: var(--gold-light);
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Services Prompt Banner */
+        .services-prompt {
+            background-color: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 35px 25px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        /* Why Choose Us Banner */
+        .why-us {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .why-card {
+            background: linear-gradient(180deg, #1e1e1e 0%, #151515 100%);
+            border-left: 4px solid var(--gold);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .why-card h4 {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .why-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .testimonial-card {
+            background-color: var(--accent-dark);
+            border: 1px solid #2e2e2e;
+            border-radius: 8px;
+            padding: 25px;
+            font-style: italic;
+        }
+
+        .stars {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-card p {
+            color: #d1d1d1;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .client-name {
+            font-style: normal;
+            font-weight: bold;
+            color: var(--gold-light);
+            font-size: 0.9rem;
+        }
+
+        /* FAQ Section */
+        .faq-box {
+            background-color: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 50px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #2a2a2a;
+            padding-bottom: 15px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-item h4 {
+            color: var(--gold-light);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .faq-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo.png" alt="Cam's Landscaping Logo" class="logo">
+        <h1>Cam's Landscaping</h1>
+        <p class="tagline">Professional & Reliable Landscape Gardening Service</p>
+        <p class="location">Serving Hedge End, Southampton & Surrounding Areas</p>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="active">Home</a>
+            <a href="services.html">Our Services</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <!-- Hero Banner -->
+        <div class="hero">
+            <h2>Transforming Gardens Across Southampton & Hedge End</h2>
+            <p>From routine lawn maintenance to full garden clean-ups, Cam’s Landscaping provides trusted, top-tier garden care tailored to your home.</p>
+            <a href="contact.html" class="btn-gold">Request Your Free Quote Today</a>
+        </div>
+
+        <!-- About Us Section -->
+        <h2 class="section-title">Welcome to Cam's Landscaping</h2>
+        <div class="about-box">
+            <p>At <strong>Cam's Landscaping</strong>, we pride ourselves on offering professional, trustworthy, and dependable landscape gardening services. Whether your lawn needs regular attention, your hedges require crisp trimming, or your garden needs a complete seasonal overhaul, we bring high standards and meticulous care to every single job.</p>
+            <p>Operating locally across <strong>Hedge End, Southampton, and surrounding Hampshire areas</strong>, we work closely with homeowners to ensure their outdoor spaces look immaculate all year round. No project is too big or small — we take care of the heavy lifting so you can enjoy your garden effortlessly.</p>
+        </div>
+
+        <!-- Feature Highlights -->
+        <div class="highlights-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Reliable & Honest</h3>
+                <p>We arrive on time, deliver consistent quality, and treat your property with complete respect.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌱</div>
+                <h3>Tailored Garden Care</h3>
+                <p>Every garden is different. We adapt our techniques to suit your lawn and garden borders.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>Free Quotes</h3>
+                <p>Clear, transparent pricing with zero obligation. Send us a message to get started.</p>
+            </div>
+        </div>
+
+        <!-- Clean Services Banner leading to services.html -->
+        <div class="services-prompt">
+            <h2 class="section-title" style="margin-bottom: 15px;">Looking For Lawn & Garden Care?</h2>
+            <p style="color: var(--text-muted); margin-bottom: 25px;">We offer complete ground works, mowing, hedge trimming, moss removal, and full garden clean-ups.</p>
+            <a href="services.html" class="btn-gold">View Full List of Services &rarr;</a>
+        </div>
+
+        <!-- Why Choose Us -->
+        <h2 class="section-title">Why Choose Us?</h2>
+        <div class="why-us">
+            <div class="why-card">
+                <h4>Local Expertise</h4>
+                <p>Based in Hedge End, we know local soil and plant conditions, ensuring best care for Southampton gardens.</p>
+            </div>
+            <div class="why-card">
+                <h4>All-In-One Solution</h4>
+                <p>From simple grass trimming to heavy clean ups, we handle every aspect of your garden maintenance.</p>
+            </div>
+            <div class="why-card">
+                <h4>Custom Quotes</h4>
+                <p>Have an extra job in mind? We accommodate custom projects and special client requests easily.</p>
+            </div>
+        </div>
+
+        <!-- Testimonials -->
+        <h2 class="section-title">What Our Clients Say</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Cam did a fantastic job clearing out our overgrown rear garden and reshaping our hedges. Very punctual, polite, and left the garden spotless."</p>
+                <div class="client-name">— Local Resident, Hedge End</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Reliable fortnightly grass cutting service. Lawns always look fresh and neat. Highly recommended to anyone in Southampton."</p>
+                <div class="client-name">— Homeowner, Southampton</div>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-box">
+            <div class="faq-item">
+                <h4>What areas do you cover?</h4>
+                <p>We are based in Hedge End and cover Southampton, West End, Botley, Fair Oak, Eastleigh, and surrounding Hampshire locations.</p>
+            </div>
+            <div class="faq-item">
+                <h4>How do free quotes work?</h4>
+                <p>You can send us a request via our Contact Us page. We will contact you directly to discuss the job details or arrange a quick site visit.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Do you offer regular garden maintenance?</h4>
+                <p>Yes! We offer flexible schedules including weekly, fortnightly, or monthly maintenance visits, as well as one-off clean-up jobs.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        &copy; 2026 Cam's Landscaping. Professional & Reliable Landscape Gardening Service. All rights reserved.
+    </footer>
+
+</body>
+</html>

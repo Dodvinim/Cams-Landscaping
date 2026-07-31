@@ -1,0 +1,203 @@
+/* Core Color Variables */
+:root {
+  --bg-dark: #0a0a0a;
+  --bg-card: #141414;
+  --gold-primary: #d4af37;
+  --gold-hover: #f3e5ab;
+  --text-main: #f5f5f5;
+  --text-muted: #a0a0a0;
+  --border-gold: rgba(212, 175, 55, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header & Navigation */
+header {
+  background-color: #000000;
+  border-bottom: 1px solid var(--border-gold);
+  padding: 1.2rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold-primary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+nav a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover, nav a.active {
+  color: var(--gold-primary);
+  border-bottom: 2px solid var(--gold-primary);
+  padding-bottom: 4px;
+}
+
+/* Layout Containers */
+.container {
+  max-width: 1100px;
+  width: 90%;
+  margin: 3rem auto;
+  flex: 1;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(180deg, #111111 0%, var(--bg-dark) 100%);
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: var(--gold-primary);
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--gold-primary);
+  border: 2px solid var(--gold-primary);
+  padding: 0.8rem 2rem;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--gold-primary);
+  color: #000;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+/* Feature Grid Cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 2rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold-primary);
+}
+
+.card h3 {
+  color: var(--gold-primary);
+  margin-bottom: 0.8rem;
+  font-size: 1.4rem;
+}
+
+.card p {
+  color: var(--text-muted);
+}
+
+/* Form Styling */
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-gold);
+  padding: 2.5rem;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  color: var(--gold-primary);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+input, textarea {
+  background-color: #080808;
+  border: 1px solid #333;
+  color: var(--text-main);
+  padding: 0.9rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--gold-primary);
+}
+
+/* Footer */
+footer {
+  background-color: #000000;
+  border-top: 1px solid var(--border-gold);
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}

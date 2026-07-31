@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Cam's Landscaping</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --text-color: #ffffff;
+            --text-muted: #b3b3b3;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(180deg, #000000 0%, var(--bg-color) 100%);
+            padding: 30px 20px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: var(--gold);
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--gold-light);
+            font-weight: 300;
+        }
+
+        .location {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        nav {
+            background-color: #0d0d0d;
+            border-bottom: 1px solid #2a2a2a;
+            position: sticky;
+            top: 0;
+            z-index: 900;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 14px 20px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--gold);
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--gold);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            margin: 10px auto 0;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 30px 0 30px;
+        }
+
+        .service-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            cursor: pointer;
+            transition: border-color 0.3s ease, transform 0.2s ease, background 0.3s ease;
+        }
+
+        .service-card:hover, .service-card:active {
+            border-color: var(--gold);
+            background-color: #242424;
+            transform: translateY(-2px);
+        }
+
+        .service-card h3 {
+            color: var(--gold-light);
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .arrow-icon {
+            color: var(--gold);
+            font-size: 1.3rem;
+            font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+
+        .service-card:hover .arrow-icon {
+            transform: translateX(5px);
+        }
+
+        .extra-jobs-box {
+            background-color: #181818;
+            border: 1px dashed var(--gold);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .extra-jobs-box h4 {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .extra-jobs-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .services-cta {
+            background-color: var(--card-bg);
+            border: 1px solid var(--gold);
+            border-radius: 12px;
+            padding: 35px 20px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .services-cta h2 {
+            color: var(--gold-light);
+            font-size: 1.5rem;
+            margin-bottom: 18px;
+        }
+
+        /* Detail Views */
+        .service-detail-view {
+            display: none;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--gold-light);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .back-link:hover {
+            color: var(--gold);
+        }
+
+        .detail-box {
+            background-color: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .detail-box h2 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .service-photo {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #444;
+            margin-bottom: 20px;
+            background-color: #151515;
+        }
+
+        .detail-box p {
+            color: #d1d1d1;
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .btn-gold {
+            display: inline-block;
+            background-color: var(--gold);
+            color: #000;
+            padding: 12px 30px;
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-full {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .btn-gold:hover {
+            background-color: var(--gold-light);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo.png" alt="Cam's Landscaping Logo" class="logo">
+        <h1>Cam's Landscaping</h1>
+        <p class="tagline">Professional & Reliable Landscape Gardening Service</p>
+        <p class="location">Serving Hedge End, Southampton & Surrounding Areas</p>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html">Home</a>
+            <a href="services.html" class="active">Our Services</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <!-- ================= MAIN SERVICES VIEW ================= -->
+        <div id="main-services-view">
+            <h2 class="section-title">Our Professional Services</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-top: 10px;">Tap any service below to view full details and photos:</p>
+
+            <div class="services-grid">
+                <div class="service-card" onclick="showService('ground-works')">
+                    <h3>Basic Ground Works</h3>
+                    <span class="arrow-icon">&rarr;</span>
+                </div>
+
+                <div class="service-card" onclick="showService('grass-cutting')">
+                    <h3>Grass Cutting</h3>
+                    <span class="arrow-icon">&rarr;</span>
+                </div>
+
+                <div class="service-card" onclick="showService('strimming')">
+                    <h3>Strimming</h3>
+                    <span class="arrow-icon">&rarr;</span>
+                </div>
+
+                <div class="service-card" onclick="showService('hedge-cutting')">
+                    <h3>Hedge Cutting</h3>
+                    <span class="arrow-icon">&rarr;</span>
+                </div>
+
+                <div class="service-card" onclick="showService('tree-pruning')">
+                    <h3>Tree Pruning</h3>
+                    <span class="arrow-icon">&rarr;</span>
+                </div>
+
+                <div class="service-card" onclick="showService('garden-borders')">
+                    <h3>Garden Borders</h3>
+                    <span class="arrow-icon">&rarr;</span>
+                </div>
+
+                <div class="service-card" onclick="showService('borders-edging')">
+                    <h3>Make Garden Borders & Edging</h3>
+                    <span class="arrow-icon">&rarr;</span>
+                </div>
+
+                <div class="service-card" onclick="showService('moss-removal')">
+                    <h3>Moss Removal</h3>
+                    <span class="arrow-icon">&rarr;</span>
+                </div>
+
+                <div class="service-card" onclick="showService('garden-cleanups')">
+                    <h3>Big Garden Clean Ups</h3>
+                    <span class="arrow-icon">&rarr;</span>
+                </div>
+            </div>
+
+            <!-- Extra jobs banner -->
+            <div class="extra-jobs-box">
+                <h4>Have a different project in mind?</h4>
+                <p>Other custom jobs and unique garden requests can easily be quoted!</p>
+            </div>
+
+            <div class="services-cta">
+                <h2>Ready to give your garden the care it deserves?</h2>
+                <a href="contact.html" class="btn-gold">Get Your Free Quote Now</a>
+            </div>
+        </div>
+
+
+        <!-- ================= 1. BASIC GROUND WORKS ================= -->
+        <div id="service-ground-works" class="service-detail-view">
+            <button class="back-link" onclick="showMainView()">&larr; Back to All Services</button>
+            <div class="detail-box">
+                <h2>Basic Ground Works</h2>
+                <img src="Services/ground-works.jpg" alt="Basic Ground Works" class="service-photo">
+                <p>Preparation, site clearing, and leveling to set your garden up for success.</p>
+                <p>We handle essential ground prep and soil turning so your garden structure stays sound, tidy, and easy to maintain.</p>
+                <a href="contact.html" class="btn-gold btn-full">Request Quote For Ground Works</a>
+            </div>
+        </div>
+
+        <!-- ================= 2. GRASS CUTTING ================= -->
+        <div id="service-grass-cutting" class="service-detail-view">
+            <button class="back-link" onclick="showMainView()">&larr; Back to All Services</button>
+            <div class="detail-box">
+                <h2>Grass Cutting</h2>
+                <img src="Services/grass-cutting.jpg" alt="Grass Cutting" class="service-photo">
+                <p>Regular or one-off lawn mowing tailored to your home's schedule.</p>
+                <p>We deliver consistent, clean cuts to keep your lawn looking healthy, green, and pristine throughout the year.</p>
+                <a href="contact.html" class="btn-gold btn-full">Request Quote For Grass Cutting</a>
+            </div>
+        </div>
+
+        <!-- ================= 3. STRIMMING ================= -->
+        <div id="service-strimming" class="service-detail-view">
+            <button class="back-link" onclick="showMainView()">&larr; Back to All Services</button>
+            <div class="detail-box">
+                <h2>Strimming</h2>
+                <img src="Services/strimming.jpg" alt="Strimming Work" class="service-photo">
+                <p>Detailed perimeter trimming for hard-to-reach garden areas.</p>
+                <p>We trim neat edges along fence lines, walls, flower beds, and pathways to eliminate stray grass and overgrown weeds.</p>
+                <a href="contact.html" class="btn-gold btn-full">Request Quote For Strimming</a>
+            </div>
+        </div>
+
+        <!-- ================= 4. HEDGE CUTTING ================= -->
+        <div id="service-hedge-cutting" class="service-detail-view">
+            <button class="back-link" onclick="showMainView()">&larr; Back to All Services</button>
+            <div class="detail-box">
+                <h2>Hedge Cutting</h2>
+                <img src="Services/hedge-cutting.jpg" alt="Hedge Cutting" class="service-photo">
+                <p>Sharp, detailed trimming for hedges, bushes, and shrubs.</p>
+                <p>We keep your hedges dense, healthy, and straight, keeping your property boundary looking smart and well-managed.</p>
+                <a href="contact.html" class="btn-gold btn-full">Request Quote For Hedge Cutting</a>
+            </div>
+        </div>
+
+        <!-- ================= 5. TREE PRUNING ================= -->
+        <div id="service-tree-pruning" class="service-detail-view">
+            <button class="back-link" onclick="showMainView()">&larr; Back to All Services</button>
+            <div class="detail-box">
+                <h2>Tree Pruning</h2>
+                <img src="Services/tree-pruning.jpg" alt="Tree Pruning" class="service-photo">
+                <p>Careful branch trimming and light tree maintenance.</p>
+                <p>We safely remove dead or low-hanging branches to encourage healthier growth and allow light back into your garden.</p>
+                <a href="contact.html" class="btn-gold btn-full">Request Quote For Tree Pruning</a>
+            </div>
+        </div>
+
+        <!-- ================= 6. GARDEN BORDERS ================= -->
+        <div id="service-garden-borders" class="service-detail-view">
+            <button class="back-link" onclick="showMainView()">&larr; Back to All Services</button>
+            <div class="detail-box">
+                <h2>Garden Borders</h2>
+                <img src="Services/garden-borders.jpg" alt="Garden Borders" class="service-photo">
+                <p>Care and upkeep for your garden plant beds and flower borders.</p>
+                <p>We clear weeds, turn soil, and maintain your existing garden borders so your plants have room to thrive cleanly.</p>
+                <a href="contact.html" class="btn-gold btn-full">Request Quote For Garden Borders</a>
+            </div>
+        </div>
+
+        <!-- ================= 7. MAKE BORDERS & EDGING ================= -->
+        <div id="service-borders-edging" class="service-detail-view">
+            <button class="back-link" onclick="showMainView()">&larr; Back to All Services</button>
+            <div class="detail-box">
+                <h2>Make Garden Borders & Edging</h2>
+                <img src="Services/borders-edging.jpg" alt="Make Garden Borders & Edging" class="service-photo">
+                <p>Designing and constructing brand-new garden borders and sharp lawn edges.</p>
+                <p>We build crisp, structured border lines that stop grass from creeping into your soil and give your garden a clear, professional shape.</p>
+                <a href="contact.html" class="btn-gold btn-full">Request Quote For Borders & Edging</a>
+            </div>
+        </div>
+
+        <!-- ================= 8. MOSS REMOVAL ================= -->
+        <div id="service-moss-removal" class="service-detail-view">
+            <button class="back-link" onclick="showMainView()">&larr; Back to All Services</button>
+            <div class="detail-box">
+                <h2>Moss Removal</h2>
+                <img src="Services/moss-removal.jpg" alt="Moss Removal" class="service-photo">
+                <p>Effective moss extraction from lawns, paving, and borders.</p>
+                <p>Moss suffocates healthy grass and leaves paths slippery. We clear moss out so your grass breathes and pathways stay safe.</p>
+                <a href="contact.html" class="btn-gold btn-full">Request Quote For Moss Removal</a>
+            </div>
+        </div>
+
+        <!-- ================= 9. BIG CLEAN UPS ================= -->
+        <div id="service-garden-cleanups" class="service-detail-view">
+            <button class="back-link" onclick="showMainView()">&larr; Back to All Services</button>
+            <div class="detail-box">
+                <h2>Big Garden Clean Ups</h2>
+                <img src="Services/garden-cleanup.jpg" alt="Big Garden Clean Up" class="service-photo">
+                <p>Complete overhaul for overgrown or neglected gardens.</p>
+                <p>We tackle thick brush, overgrown weeds, dead leaves, and garden waste to give you back total control of your outdoor space.</p>
+                <a href="contact.html" class="btn-gold btn-full">Request Quote For Garden Clean Up</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        &copy; 2026 Cam's Landscaping. Professional & Reliable Landscape Gardening Service. All rights reserved.
+    </footer>
+
+    <script>
+        function showService(serviceId) {
+            document.getElementById('main-services-view').style.display = 'none';
+            document.querySelectorAll('.service-detail-view').forEach(view => {
+                view.style.display = 'none';
+            });
+            document.getElementById('service-' + serviceId).style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showMainView() {
+            document.querySelectorAll('.service-detail-view').forEach(view => {
+                view.style.display = 'none';
+            });
+            document.getElementById('main-services-view').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
